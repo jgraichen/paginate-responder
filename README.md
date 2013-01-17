@@ -64,6 +64,11 @@ The `total_pages` method on the collection will be used as
 total page count. If not total page method is present or
 nil is returned some link header may be missing.
 
+## TODOs
+
+* Documentation
+** Controller methods
+
 ## Contributing
 
 1. Fork it
