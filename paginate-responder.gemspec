@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = PaginateResponder::VERSION
   gem.authors       = ["Jan Graichen"]
   gem.email         = ["jg@altimos.de"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{A Rails pagination responder with link header support.}
+  gem.summary       = %q{A Rails pagination responder with link header support.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
