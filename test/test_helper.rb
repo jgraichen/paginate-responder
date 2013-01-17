@@ -34,6 +34,6 @@ class PaginateController < ActionController::Base
   respond_to :json
 
   def index
-    respond_with ('a'..'z').to_a
+    respond_with ('AA'..'zz').to_a
   end
 end
