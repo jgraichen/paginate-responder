@@ -1,5 +1,4 @@
-# Paginate::Responder
-[![Build Status](https://travis-ci.org/jgraichen/paginate-responder.png?branch=master)](https://travis-ci.org/jgraichen/paginate-responder)
+# Paginate::Responder [![Build Status](https://travis-ci.org/jgraichen/paginate-responder.png?branch=master)](https://travis-ci.org/jgraichen/paginate-responder)
 
 A Rails pagination responder with link header support.
 
