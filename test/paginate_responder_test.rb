@@ -38,14 +38,32 @@ class PaginateResponderTest < ActionController::TestCase
 
     assert_equal 3, response.links.size
 
-    assert_equal "first", response.links[0][:rel]
+    assert_equal "first", response.links[0][:params][:rel]
     assert_equal "http://test.host/index.json?page=1", response.links[0][:url]
 
-    assert_equal "next", response.links[1][:rel]
+    assert_equal "next", response.links[1][:params][:rel]
     assert_equal "http://test.host/index.json?page=2", response.links[1][:url]
 
-    assert_equal "last", response.links[2][:rel]
+    assert_equal "last", response.links[2][:params][:rel]
     assert_equal "http://test.host/index.json?page=14", response.links[2][:url]
+  end
+
+  def test_headers_page_2
+    get :index, :format => :json, :page => 2
+
+    assert_equal 4, response.links.size
+
+    assert_equal "first", response.links[0][:params][:rel]
+    assert_equal "http://test.host/index.json?page=1", response.links[0][:url]
+
+    assert_equal "prev", response.links[1][:params][:rel]
+    assert_equal "http://test.host/index.json?page=1", response.links[1][:url]
+
+    assert_equal "next", response.links[2][:params][:rel]
+    assert_equal "http://test.host/index.json?page=3", response.links[2][:url]
+
+    assert_equal "last", response.links[3][:params][:rel]
+    assert_equal "http://test.host/index.json?page=14", response.links[3][:url]
   end
 
   def test_headers_page_5
@@ -53,16 +71,16 @@ class PaginateResponderTest < ActionController::TestCase
 
     assert_equal 4, response.links.size
 
-    assert_equal "first", response.links[0][:rel]
+    assert_equal "first", response.links[0][:params][:rel]
     assert_equal "http://test.host/index.json?page=1", response.links[0][:url]
 
-    assert_equal "prev", response.links[1][:rel]
+    assert_equal "prev", response.links[1][:params][:rel]
     assert_equal "http://test.host/index.json?page=4", response.links[1][:url]
 
-    assert_equal "next", response.links[2][:rel]
+    assert_equal "next", response.links[2][:params][:rel]
     assert_equal "http://test.host/index.json?page=6", response.links[2][:url]
 
-    assert_equal "last", response.links[3][:rel]
+    assert_equal "last", response.links[3][:params][:rel]
     assert_equal "http://test.host/index.json?page=14", response.links[3][:url]
   end
 
@@ -71,14 +89,32 @@ class PaginateResponderTest < ActionController::TestCase
 
     assert_equal 3, response.links.size
 
-    assert_equal "first", response.links[0][:rel]
+    assert_equal "first", response.links[0][:params][:rel]
     assert_equal "http://test.host/index.json?page=1", response.links[0][:url]
 
-    assert_equal "prev", response.links[1][:rel]
+    assert_equal "prev", response.links[1][:params][:rel]
     assert_equal "http://test.host/index.json?page=13", response.links[1][:url]
 
-    assert_equal "last", response.links[2][:rel]
+    assert_equal "last", response.links[2][:params][:rel]
     assert_equal "http://test.host/index.json?page=14", response.links[2][:url]
+  end
+
+  def test_headers_page_before_last_page
+    get :index, :format => :json, :page => 13
+
+    assert_equal 4, response.links.size
+
+    assert_equal "first", response.links[0][:params][:rel]
+    assert_equal "http://test.host/index.json?page=1", response.links[0][:url]
+
+    assert_equal "prev", response.links[1][:params][:rel]
+    assert_equal "http://test.host/index.json?page=12", response.links[1][:url]
+
+    assert_equal "next", response.links[2][:params][:rel]
+    assert_equal "http://test.host/index.json?page=14", response.links[2][:url]
+
+    assert_equal "last", response.links[3][:params][:rel]
+    assert_equal "http://test.host/index.json?page=14", response.links[3][:url]
   end
 
   def test_headers_per_page
@@ -86,13 +122,13 @@ class PaginateResponderTest < ActionController::TestCase
 
     assert_equal 3, response.links.size
 
-    assert_equal "first", response.links[0][:rel]
+    assert_equal "first", response.links[0][:params][:rel]
     assert_equal "http://test.host/index.json?page=1&per_page=10", response.links[0][:url]
 
-    assert_equal "next", response.links[1][:rel]
+    assert_equal "next", response.links[1][:params][:rel]
     assert_equal "http://test.host/index.json?page=2&per_page=10", response.links[1][:url]
 
-    assert_equal "last", response.links[2][:rel]
+    assert_equal "last", response.links[2][:params][:rel]
     assert_equal "http://test.host/index.json?page=68&per_page=10", response.links[2][:url]
   end
 

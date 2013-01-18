@@ -5,10 +5,10 @@ module Responders
       if get? && resource.respond_to?(:paginate)
         @resource = resource.paginate :page => self.page, :per_page => self.per_page
 
-        controller.response.link("first", controller.url_for(request.params.merge(:page => 1)))
-        controller.response.link("prev", controller.url_for(request.params.merge(:page => page - 1))) if page > 1
-        controller.response.link("next", controller.url_for(request.params.merge(:page => page + 1))) if total_pages && (page+1) < total_pages
-        controller.response.link("last", controller.url_for(request.params.merge(:page => total_pages))) if total_pages
+        controller.response.link(controller.url_for(request.params.merge(:page => 1)), :rel => "first")
+        controller.response.link(controller.url_for(request.params.merge(:page => page - 1)), :rel => "prev") if page > 1
+        controller.response.link(controller.url_for(request.params.merge(:page => page + 1)), :rel => "next") if total_pages && page < total_pages
+        controller.response.link(controller.url_for(request.params.merge(:page => total_pages)), :rel => "last") if total_pages
         controller.response.headers["X-Total-Pages"] = total_pages if total_pages
       end
       super
