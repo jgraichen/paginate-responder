@@ -6,7 +6,7 @@ gemspec
 group :development do
   gem 'minitest'
   gem 'rake'
-  gem 'rack-link_headers', :path => '../rack-link-headers'
+  gem 'rack-link_headers'
 end
 
 group :test do
