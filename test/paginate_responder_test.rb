@@ -135,6 +135,6 @@ class PaginateResponderTest < ActionController::TestCase
   def test_headers_total_pages
     get :index, :format => :json
 
-    assert_equal "14", response.headers["X-Total-Pages"].to_s
+    assert_equal "14", response.headers["X-Total-Pages"]
   end
 end

@@ -9,7 +9,7 @@ module Responders
         controller.response.link(controller.url_for(request.params.merge(:page => page - 1)), :rel => "prev") if page > 1
         controller.response.link(controller.url_for(request.params.merge(:page => page + 1)), :rel => "next") if total_pages && page < total_pages
         controller.response.link(controller.url_for(request.params.merge(:page => total_pages)), :rel => "last") if total_pages
-        controller.response.headers["X-Total-Pages"] = total_pages if total_pages
+        controller.response.headers["X-Total-Pages"] = total_pages.to_s if total_pages
       end
       super
     end
