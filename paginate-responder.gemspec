@@ -23,4 +23,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'will_paginate'
   gem.add_development_dependency 'actionpack', '3.2.8'
+  gem.add_development_dependency 'kaminari', '0.14.1'
 end
