@@ -10,11 +10,19 @@ require 'active_support'
 require 'action_controller'
 require 'will_paginate/array'
 
+# load Kaminari components
+require 'kaminari/config'
+require 'kaminari/helpers/paginator'
+require 'kaminari/models/page_scope_methods'
+require 'kaminari/models/configuration_methods'
+require 'kaminari/models/array_extension'
+
 require 'paginate-responder'
 
 Responders::Routes = ActionDispatch::Routing::RouteSet.new
 Responders::Routes.draw do
   match '/index' => 'paginate#index'
+  match '/index' => 'kaminari#index'
 end
 
 class ActiveSupport::TestCase
