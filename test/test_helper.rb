@@ -8,6 +8,9 @@ ENV["RAILS_ENV"] = "test"
 
 require 'active_support'
 require 'action_controller'
+require 'minitest/reporters'
+MiniTest::Reporters.use!
+
 require 'will_paginate/array'
 
 require 'paginate-responder'
