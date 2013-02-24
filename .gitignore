@@ -1,8 +1,11 @@
 *.gem
 *.rbc
+*.iml
 .bundle
 .config
 .yardoc
+.idea
+.rvmrc
 Gemfile.lock
 InstalledFiles
 _yardoc
