@@ -1,5 +1,5 @@
 language: ruby
 rvm:
-  - ruby-2.0.0-p0
-  - ruby-1.9.3-p392
+  - 2.0.0
+  - 1.9.3
   - jruby
