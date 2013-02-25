@@ -20,7 +20,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rack-link_headers', '>= 2.2'
 
   gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'actionpack'
+  gem.add_development_dependency 'actionpack', '>= 3.2.0'
   gem.add_development_dependency 'minitest'
   gem.add_development_dependency 'minitest-reporters', '>= 0.8.0'
   gem.add_development_dependency 'will_paginate'
