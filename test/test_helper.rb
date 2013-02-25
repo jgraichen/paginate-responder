@@ -11,8 +11,6 @@ require 'action_controller'
 require 'minitest/reporters'
 MiniTest::Reporters.use!
 
-require 'will_paginate/array'
-
 require 'paginate-responder'
 
 Responders::Routes = ActionDispatch::Routing::RouteSet.new
@@ -26,17 +24,17 @@ class ActiveSupport::TestCase
   end
 end
 
-class PaginationResponder < ActionController::Responder
+class TestResponder < ActionController::Responder
   include Responders::PaginateResponder
 end
 
 class PaginateController < ActionController::Base
+  attr_accessor :resource
   include Responders::Routes.url_helpers
-
-  self.responder = PaginationResponder
+  self.responder = TestResponder
   respond_to :json
 
   def index
-    respond_with ('AA'..'zz').to_a
+    respond_with resource
   end
 end

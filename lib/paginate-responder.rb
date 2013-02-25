@@ -6,4 +6,13 @@ end
 
 module PaginateResponder
   autoload :VERSION, 'paginate-responder/version'
+  autoload :Paginator, 'paginate-responder/paginator'
+
+  module Adapter
+    autoload :Base, 'paginate-responder/adapter/base'
+    autoload :Internal, 'paginate-responder/adapter/internal'
+  end
 end
+
+require 'paginate-responder/adapter/paginate_adapter'
+require 'paginate-responder/adapter/kaminari_adapter'

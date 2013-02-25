@@ -16,8 +16,9 @@ Or install it yourself as:
 
     $ gem install paginate-responder
 
-You will also need a pagination gem like
-[will_paginate](mislav/will_paginate).
+You will also need a pagination gem. `PaginateResponder` comes with adapters for
+* [will_paginate](https://github.com/mislav/will_paginate) and
+* [kaminari](https://github.com/amatsuda/kaminari).
 
 ## Usage
 
@@ -55,14 +56,6 @@ page is first or last page.
 Also a `X-Total-Pages` header will be added with the total
 number of pages if available. This allows applications
 to display a progress bar or similar while fetching pages.
-
-`PaginateResponder` should work with any pagination gem that
-adds a `paginate` method to collections. Tests run with
-[will_paginate](mislav/will_paginate).
-
-The `total_pages` method on the collection will be used as
-total page count. If not total page method is present or
-nil is returned some link header may be missing.
 
 ## TODOs
 
