@@ -3,3 +3,6 @@ rvm:
   - 2.0.0
   - 1.9.3
   - jruby
+env:
+  - GEM=will_paginate
+  - GEM=kaminari
