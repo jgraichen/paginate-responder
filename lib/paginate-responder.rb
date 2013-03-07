@@ -10,7 +10,6 @@ module PaginateResponder
 
   module Adapter
     autoload :Base, 'paginate-responder/adapter/base'
-    autoload :Internal, 'paginate-responder/adapter/internal'
   end
 end
 
