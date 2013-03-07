@@ -5,7 +5,7 @@ module PaginateResponder::Adapter
   class PaginateAdapter < Base
 
     def suitable?
-      resource.respond_to?(:paginate)
+      defined?(:WillPaginate) and resource.respond_to?(:paginate)
     end
 
     def paginate(opts)

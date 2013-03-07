@@ -5,7 +5,7 @@ module PaginateResponder::Adapter
   class KaminariAdapter < Base
 
     def suitable?
-      resource.respond_to?(:page)
+      defined?(:Kaminari) and resource.respond_to?(:page) and not resource.respond_to?(:paginate)
     end
 
     def paginate(opts)
