@@ -10,7 +10,8 @@ Gem::Specification.new do |gem|
   gem.email         = ['jg@altimos.de']
   gem.description   = %q{A Rails pagination responder with link header support.}
   gem.summary       = %q{A Rails pagination responder with link header support.}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/jgraichen/paginate-responder"
+  gem.license       = 'MIT'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
