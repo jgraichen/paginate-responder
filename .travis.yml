@@ -10,5 +10,5 @@ gemfile:
   - gemfiles/Gemfile.rails-4-0
   - gemfiles/Gemfile.rails-head
 matrix:
-  allowed_failures:
+  allow_failures:
   - gemfile: gemfiles/Gemfile.rails-head
