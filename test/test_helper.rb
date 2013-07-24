@@ -16,7 +16,7 @@ require 'paginate-responder'
 
 Responders::Routes = ActionDispatch::Routing::RouteSet.new
 Responders::Routes.draw do
-  match '/index' => 'paginate#index'
+  get '/index' => 'paginate#index'
 end
 
 class ActiveSupport::TestCase
