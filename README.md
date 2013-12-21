@@ -59,6 +59,34 @@ Also a `X-Total-Pages` header will be added with the total
 number of pages if available. This allows applications
 to display a progress bar or similar while fetching pages.
 
+## Override page detections and options
+
+You can override the page detection by creating a method
+`page` in your controller that returns the page index as
+a fixnum:
+
+```
+class ApplicationController
+  def page
+    params[:seite].to_i # seite means page in German
+  end
+end
+```
+
+Same goes for `per_page` and `max_per_page`:
+
+```
+class ApplicationController
+  def per_page
+    10
+  end
+
+  def max_per_page
+    25
+  end
+end
+```
+
 ## TODOs
 
 * Documentation
