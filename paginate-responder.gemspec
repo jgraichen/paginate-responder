@@ -25,7 +25,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'activerecord', '>= 3.2.0'
   gem.add_development_dependency 'sqlite3'
   gem.add_development_dependency 'minitest'
-  gem.add_development_dependency 'minitest-reporters', '>= 0.8.0'
+  gem.add_development_dependency 'minitest-reporters', '>= 0.8.0', '< 1'
   gem.add_development_dependency 'will_paginate'
   gem.add_development_dependency 'kaminari'
 end
