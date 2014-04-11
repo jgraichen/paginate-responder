@@ -20,7 +20,7 @@ You will also need a pagination gem. `PaginateResponder` comes with adapters for
 * [will_paginate](https://github.com/mislav/will_paginate) and
 * [kaminari](https://github.com/amatsuda/kaminari).
 
-It is recommended to use only on pagination gem at once.
+It is recommended to use only one pagination gem at once.
 
 ## Usage
 
