@@ -22,5 +22,9 @@ module PaginateResponder::Adapter
     def total_pages
       resource.num_pages if resource.respond_to? :num_pages
     end
+
+    def total_count
+      resource.total_count if resource.respond_to? :total_count
+    end
   end
 end
