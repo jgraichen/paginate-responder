@@ -1,4 +1,8 @@
-# Paginate::Responder [![Gem Version](https://badge.fury.io/rb/paginate-responder.png)](http://badge.fury.io/rb/paginate-responder)[![Build Status](https://travis-ci.org/jgraichen/paginate-responder.png?branch=master)](https://travis-ci.org/jgraichen/paginate-responder) [![Code Climate](https://codeclimate.com/github/jgraichen/paginate-responder.png)](https://codeclimate.com/github/jgraichen/paginate-responder)
+# Paginate::Responder 
+
+[![Gem Version](https://badge.fury.io/rb/paginate-responder.png)](http://badge.fury.io/rb/paginate-responder)
+[![Build Status](https://travis-ci.org/jgraichen/paginate-responder.png?branch=master)](https://travis-ci.org/jgraichen/paginate-responder)
+[![Code Climate](https://codeclimate.com/github/jgraichen/paginate-responder.png)](https://codeclimate.com/github/jgraichen/paginate-responder)
 
 A Rails pagination responder with link header support.
 
@@ -56,7 +60,8 @@ Next and previous page links will not be added if current
 page is first or last page.
 
 Also a `X-Total-Pages` header will be added with the total
-number of pages if available. This allows applications
+number of pages if available and a `X-Total-Count` header 
+with the total number of items. This allows applications
 to display a progress bar or similar while fetching pages.
 
 ## Override page detections and options
