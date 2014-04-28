@@ -4,13 +4,14 @@ require 'bundler'
 Bundler.setup
 
 # Configure Rails
-ENV["RAILS_ENV"] = "test"
+ENV['RAILS_ENV'] = 'test'
 
 require 'active_support'
 require 'action_controller'
 require 'active_record'
 require 'minitest/reporters'
 MiniTest::Reporters.use!
+
 
 require 'paginate-responder'
 
@@ -27,21 +28,30 @@ end
 
 class ArModel < ActiveRecord::Base
   has_many :ar_assoc_models
-  def as_json(opts = {}); self.id end
+  def as_json(opts = {})
+    id
+  end
 end
 
 class ArAssocModel < ActiveRecord::Base
-  def as_json(opts = {}); self.id end
+  def as_json(opts = {})
+    id
+  end
 end
 
 ActiveRecord::Base.establish_connection(
-  :adapter => 'sqlite3',
-  :database  => ':memory:'
+  adapter: 'sqlite3',
+  database: ':memory:'
 )
-ActiveRecord::Base.connection.execute(
-    'CREATE TABLE ar_models (id INTEGER PRIMARY KEY AUTOINCREMENT);')
-ActiveRecord::Base.connection.execute(
-    'CREATE TABLE ar_assoc_models (id INTEGER PRIMARY KEY AUTOINCREMENT, ar_model_id INTEGER);')
+ActiveRecord::Base.connection.execute <<SQL
+  CREATE TABLE ar_models (id INTEGER PRIMARY KEY AUTOINCREMENT);
+SQL
+ActiveRecord::Base.connection.execute <<SQL
+  CREATE TABLE ar_assoc_models (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, ar_model_id INTEGER
+  );
+SQL
+
 676.times do
   ArModel.create!.tap do |ar_model|
     5.times do

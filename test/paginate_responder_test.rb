@@ -2,7 +2,7 @@ require 'test_helper.rb'
 
 GEM = ENV['GEM'].to_s.split ','
 GEM = ['will_paginate'] if GEM.empty?
-puts '[INFO] Running tests with #{GEM.join(' and ')}.'
+puts "[INFO] Running tests with #{GEM.join(' and ')}."
 
 class PaginateResponderTest < ActionController::TestCase
   tests PaginateController
@@ -27,7 +27,7 @@ class PaginateResponderTest < ActionController::TestCase
       end
 
       def array_resource
-        Kaminari.paginate_array 'AA'..'zz'.to_a
+        Kaminari.paginate_array ('AA'..'zz').to_a
       end
     end
   end
