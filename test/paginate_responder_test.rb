@@ -33,7 +33,11 @@ class PaginateResponderTest < ActionController::TestCase
   end
 
   def setup
-    @controller.resource = ArModel.scoped
+    if ActiveRecord::VERSION::MAJOR >= 4
+      @controller.resource = ArModel.all
+    else
+      @controller.resource = ArModel.scoped
+    end
   end
 
   def json
