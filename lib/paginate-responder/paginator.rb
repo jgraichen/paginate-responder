@@ -41,6 +41,7 @@ module PaginateResponder
       link! 'last', total_pages if total_pages
 
       response.headers["X-Total-Pages"] = total_pages.to_s if total_pages
+      response.headers["X-Total-Count"] = total_count.to_s if total_count
     end
 
     def link!(rel, page)
@@ -76,6 +77,10 @@ module PaginateResponder
 
     def total_pages
       @adapter.total_pages
+    end
+
+    def total_count
+      @adapter.total_count
     end
   end
 end
