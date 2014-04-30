@@ -30,6 +30,12 @@ module PaginateResponder::Adapter
       nil
     end
 
+    # Return number of total items.
+    #
+    def total_count
+      nil
+    end
+
     # Return default values for items per page and maximum
     # items per page.
     #
