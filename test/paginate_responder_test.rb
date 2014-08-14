@@ -223,4 +223,11 @@ class PaginateResponderTest < ActionController::TestCase
 
     assert_equal '676', response.headers['X-Total-Count']
   end
+
+  def test_resource_instance_var_for_templates
+    collection = [ArModel.find(1), ArModel.find(2)]
+    @controller.resource = collection
+    get :index, format: :json
+    assert_equal assigns(:paginate), collection
+  end
 end
