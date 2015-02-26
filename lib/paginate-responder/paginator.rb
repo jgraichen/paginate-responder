@@ -45,7 +45,9 @@ module PaginateResponder
     end
 
     def link!(rel, page)
-      response.link(controller.url_for(request.params.merge(:page => page)), :rel => rel)
+      pagination_params = { :page => page }
+      pagination_params[:per_page] = per_page if request.params.has_key?(:per_page)
+      response.link(controller.url_for(request.params.merge(pagination_params)), :rel => rel)
     end
 
     def resource!
