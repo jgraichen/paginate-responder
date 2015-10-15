@@ -5,7 +5,7 @@ module PaginateResponder::Adapter
   class KaminariAdapter < Base
 
     def suitable?
-      defined?(:Kaminari) and resource.respond_to?(:page) and not resource.respond_to?(:paginate)
+      resource.respond_to?(:page) and not resource.respond_to?(:paginate)
     end
 
     def paginate(opts)
@@ -26,5 +26,9 @@ module PaginateResponder::Adapter
     def total_count
       resource.total_count if resource.respond_to? :total_count
     end
+  end
+
+  if defined?(:Kaminari)
+    ::PaginateResponder::Paginator.register KaminariAdapter
   end
 end

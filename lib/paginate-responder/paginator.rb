@@ -11,7 +11,7 @@ module PaginateResponder
     def find_adapter
       return controller.pagination_adapter(resource) if controller.respond_to? :pagination_adapter
 
-      Adapter::Base.subclasses.each do |adapter_class|
+      self.class.adapters.each do |adapter_class|
         begin
           adapter_class.new(resource).tap do |adapter|
             return adapter if adapter.suitable?
@@ -81,6 +81,16 @@ module PaginateResponder
 
     def total_count
       @adapter.total_count
+    end
+
+    class << self
+      def adapters
+        @adapters ||= []
+      end
+
+      def register(adapter)
+        adapters << adapter
+      end
     end
   end
 end

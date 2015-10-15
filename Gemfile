@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :development do
-  gem 'actionpack', :require => false
-  gem 'activerecord', :require => false
+  gem 'actionpack', require: false
+  gem 'activerecord', require: false
+  gem 'responders', '~> 2.0', require: false
 end
