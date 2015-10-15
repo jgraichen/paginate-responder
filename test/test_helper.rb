@@ -9,7 +9,12 @@ ENV['RAILS_ENV'] = 'test'
 require 'active_support'
 require 'action_controller'
 require 'active_record'
-require 'responders'
+
+begin
+  require 'responders'
+rescue LoadError
+end
+
 require 'minitest/reporters'
 MiniTest::Reporters.use!
 
