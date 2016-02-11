@@ -3,7 +3,7 @@ module PaginateResponder
     MAJOR = 1
     MINOR = 4
     PATCH = 2
-    STAGE = :beta0
+    STAGE = nil
 
     def self.to_s
       [MAJOR, MINOR, PATCH, STAGE].reject(&:nil?).join '.'
