@@ -212,6 +212,21 @@ class PaginateResponderTest < ActionController::TestCase
     assert_equal 'http://test.host/index.json?page=68&per_page=10', response.links[2][:url]
   end
 
+  def test_headers_per_page_maximum
+    get :index, format: :json, page: 1, per_page: 100
+
+    assert_equal 3, response.links.size
+
+    assert_equal 'first', response.links[0][:params][:rel]
+    assert_equal 'http://test.host/index.json?page=1&per_page=50', response.links[0][:url]
+
+    assert_equal 'next', response.links[1][:params][:rel]
+    assert_equal 'http://test.host/index.json?page=2&per_page=50', response.links[1][:url]
+
+    assert_equal 'last', response.links[2][:params][:rel]
+    assert_equal 'http://test.host/index.json?page=14&per_page=50', response.links[2][:url]
+  end
+
   def test_custom_headers_total_pages
     get :index, format: :json
 
