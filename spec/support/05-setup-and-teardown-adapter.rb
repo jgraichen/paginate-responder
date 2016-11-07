@@ -33,4 +33,6 @@ module SetupAndTeardownAdapter
   def method_name
     @example
   end
+
+  attr_accessor :request, :params
 end

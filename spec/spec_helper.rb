@@ -4,6 +4,7 @@ require 'bundler/setup'
 # Configure Rails
 ENV['RAILS_ENV'] = 'test'
 
+require 'rails'
 require 'active_support'
 require 'action_controller'
 require 'active_record'
