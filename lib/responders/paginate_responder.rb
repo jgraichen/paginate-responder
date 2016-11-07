@@ -1,7 +1,7 @@
 module Responders
   module PaginateResponder
     def to_format
-      @resource = paginate! if get?
+      paginate! if get?
 
       super
     end
@@ -9,7 +9,8 @@ module Responders
     private
 
     def paginate!
-      ::Responders::PaginateResponder.find(self).new(self).paginate!
+      adapter = ::Responders::PaginateResponder.find(self)
+      @resource = adapter.new(self).paginate! if adapter
     end
 
     class << self
