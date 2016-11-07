@@ -3,25 +3,10 @@ require 'spec_helper'
 RSpec.describe Responders::PaginateResponder, type: :controller do
   case $gem
     when 'will_paginate'
-      require 'will_paginate/array'
-      require 'will_paginate/active_record'
-
       let(:array_resource) do
         ('AA'..'zz').to_a
       end
     when 'kaminari'
-      require 'kaminari'
-      require 'kaminari/models/array_extension'
-
-      before(:suite) do
-        Kaminari::Hooks.init
-
-        Kaminari.configure do |config|
-          config.default_per_page = 50
-          config.max_per_page = 50
-        end
-      end
-
       let(:array_resource) do
         Kaminari.paginate_array ('AA'..'zz').to_a
       end

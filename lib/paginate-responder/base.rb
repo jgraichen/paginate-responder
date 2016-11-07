@@ -30,8 +30,6 @@ module PaginateResponder
     protected
 
     def paginate
-      puts "#{self.class} per_page: #{per_page} max_per_page: #{max_per_page}"
-
       resource
     end
 
@@ -89,7 +87,7 @@ module PaginateResponder
     end
 
     def last_page
-      total_pages if total_pages
+      total_pages
     end
 
     def total_pages

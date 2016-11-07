@@ -24,7 +24,7 @@ module Responders
       def find(responder)
         adapters.find do |adapter|
           adapter.suitable?(responder.resource, responder)
-        end || PaginateResponder::Base
+        end
       end
     end
   end
