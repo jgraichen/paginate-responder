@@ -1,34 +1,12 @@
-require 'minitest/autorun'
-require 'bundler'
 
-Bundler.setup
-
-# Configure Rails
-ENV['RAILS_ENV'] = 'test'
-
-require 'active_support'
-require 'action_controller'
-require 'active_record'
-
-begin
-  require 'responders'
-rescue LoadError
-end
-
-require 'minitest/reporters'
-MiniTest::Reporters.use!
-
-
-require 'paginate-responder'
-
-Responders::Routes = ActionDispatch::Routing::RouteSet.new
-Responders::Routes.draw do
-  get '/index' => 'paginate#index'
+$routes = ActionDispatch::Routing::RouteSet.new
+$routes.draw do
+  get '/index' => 'test#index'
 end
 
 class ActiveSupport::TestCase
   setup do
-    @routes = Responders::Routes
+    @routes = $routes
   end
 end
 
@@ -70,13 +48,35 @@ class TestResponder < ActionController::Responder
   include Responders::PaginateResponder
 end
 
-class PaginateController < ActionController::Base
+class TestController < ActionController::Base
+  include $routes.url_helpers
+
   attr_accessor :resource
-  include Responders::Routes.url_helpers
+
   self.responder = TestResponder
+
   respond_to :json
 
   def index
     respond_with resource
   end
+end
+
+module TestSpecConfiguration
+  extend ActiveSupport::Concern
+
+  included do
+    before do
+      @routes = $routes
+      @controller = TestController.new
+    end
+
+    def resource=(resource)
+      @controller.resource = resource
+    end
+  end
+end
+
+RSpec.configure do |config|
+  config.include TestSpecConfiguration
 end

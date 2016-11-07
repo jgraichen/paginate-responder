@@ -20,12 +20,16 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'rack-link_headers', '>= 2.2'
 
-  gem.add_development_dependency 'rake'
   gem.add_development_dependency 'actionpack', '>= 3.2.0'
   gem.add_development_dependency 'activerecord', '>= 3.2.0'
-  gem.add_development_dependency 'sqlite3'
-  gem.add_development_dependency 'minitest'
-  gem.add_development_dependency 'minitest-reporters'
-  gem.add_development_dependency 'will_paginate'
+  gem.add_development_dependency 'appraisal'
   gem.add_development_dependency 'kaminari'
+  gem.add_development_dependency 'pry'
+  gem.add_development_dependency 'pry-byebug'
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'responders'
+  gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'rspec-rails'
+  gem.add_development_dependency 'sqlite3'
+  gem.add_development_dependency 'will_paginate'
 end
