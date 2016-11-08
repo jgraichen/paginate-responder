@@ -24,7 +24,7 @@ module Responders
 
       def init(responder)
         if responder.controller.respond_to?(:pagination_adapter_init)
-          return controller.pagination_adapter_init(responder)
+          return responder.controller.pagination_adapter_init(responder)
         end
 
         adapter = find(responder)
