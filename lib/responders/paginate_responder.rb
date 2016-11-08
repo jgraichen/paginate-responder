@@ -9,8 +9,8 @@ module Responders
     private
 
     def paginate!
-      adapter = ::Responders::PaginateResponder.find(self)
-      @resource = adapter.new(self).paginate! if adapter
+      adapter = ::Responders::PaginateResponder.init(self)
+      @resource = adapter.paginate! if adapter
     end
 
     class << self
@@ -20,6 +20,15 @@ module Responders
 
       def adapters
         @adpaters ||= ::Set.new
+      end
+
+      def init(responder)
+        if responder.controller.respond_to?(:pagination_adapter_init)
+          return controller.pagination_adapter_init(responder)
+        end
+
+        adapter = find(responder)
+        adapter.new(responder) if adapter
       end
 
       def find(responder)
