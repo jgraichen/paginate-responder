@@ -31,7 +31,7 @@ case $gem
     require 'kaminari'
     require 'kaminari/models/array_extension'
 
-    Kaminari::Hooks.init
+    Kaminari::Hooks.init if defined?(Kaminari::Hooks)
 
     Kaminari.configure do |config|
       config.default_per_page = 50
