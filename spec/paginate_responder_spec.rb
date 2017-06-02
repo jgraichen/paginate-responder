@@ -154,5 +154,6 @@ RSpec.describe Responders::PaginateResponder, type: :controller do
     it { is_expected.to include 'X-Total-Pages' => '14' }
     it { is_expected.to include 'X-Total-Count' => '676' }
     it { is_expected.to include 'X-Per-Page' => '50' }
+    it { is_expected.to include 'X-Current-Page' => '1' }
   end
 end

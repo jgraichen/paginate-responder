@@ -39,9 +39,10 @@ module PaginateResponder
       link! 'next',  page: next_page  if next_page
       link! 'last',  page: last_page  if last_page
 
-      response.headers["X-Total-Pages"] = total_pages.to_s if total_pages
-      response.headers["X-Total-Count"] = total_count.to_s if total_count
-      response.headers["X-Per-Page"]    = per_page.to_s    if per_page
+      response.headers["X-Total-Pages"]  = total_pages.to_s if total_pages
+      response.headers["X-Total-Count"]  = total_count.to_s if total_count
+      response.headers["X-Per-Page"]     = per_page.to_s    if per_page
+      response.headers["X-Current-Page"] = page.to_s        if page
     end
 
     def page
