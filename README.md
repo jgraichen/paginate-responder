@@ -21,7 +21,7 @@ Or install it yourself as:
     $ gem install paginate-responder
 
 You will also need a pagination gem. `PaginateResponder` comes with adapters for
-* [will_paginate](https://github.com/mislav/will_paginate) and
+* [will_paginate](https://github.com/mislav/will_paginate)
 * [kaminari](https://github.com/amatsuda/kaminari).
 
 It is recommended to use only one pagination gem at once.
@@ -51,13 +51,13 @@ end
 `PaginateResponder` will add the following link headers to
 non HTML responses:
 
-* *first* First page's URL.
-* *last* Last page's URL.
-* *next* Next page's URL.
-* *prev* Previous page's URL.
+* `first` First page's URL.
+* `last` Last page's URL.
+* `next` Next page's URL.
+* `prev` Previous page's URL.
 
-Next and previous page links will not be added if current
-page is first or last page.
+`next` and `prev` page links will not be added if current
+page is `first` or `last` page.
 
 Also a `X-Total-Pages` header will be added with the total
 number of pages if available and a `X-Total-Count` header 
@@ -70,7 +70,7 @@ You can override the page detection by creating a method
 `page` in your controller that returns the page index as
 a fixnum:
 
-```
+```ruby
 class ApplicationController
   def page
     params[:seite].to_i # seite means page in German
@@ -80,7 +80,7 @@ end
 
 Same goes for `per_page` and `max_per_page`:
 
-```
+```ruby
 class ApplicationController
   def per_page
     10
