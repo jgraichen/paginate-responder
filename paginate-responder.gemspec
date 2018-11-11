@@ -24,6 +24,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'activerecord', '>= 3.2.0'
   gem.add_development_dependency 'appraisal'
   gem.add_development_dependency 'kaminari'
+  gem.add_development_dependency 'pagy'
   gem.add_development_dependency 'pry'
   gem.add_development_dependency 'pry-byebug'
   gem.add_development_dependency 'rake'

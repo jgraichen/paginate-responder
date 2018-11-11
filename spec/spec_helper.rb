@@ -37,6 +37,15 @@ case $gem
       config.default_per_page = 50
       config.max_per_page = 50
     end
+  when 'pagy'
+    require 'pagy'
+    require 'pagy/extras/array'
+    require 'pagy/extras/items'
+
+    TestController.include(Pagy::Backend)
+
+    Pagy::VARS[:items] = 50
+    Pagy::VARS[:max_items] = 50
 end
 
 RSpec.configure do |config|

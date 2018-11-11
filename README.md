@@ -23,6 +23,7 @@ Or install it yourself as:
 You will also need a pagination gem. `PaginateResponder` comes with adapters for
 * [will_paginate](https://github.com/mislav/will_paginate)
 * [kaminari](https://github.com/amatsuda/kaminari).
+* [pagy](https://github.com/ddnexus/pagy).
 
 It is recommended to use only one pagination gem at once.
 
