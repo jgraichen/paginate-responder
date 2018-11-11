@@ -3,9 +3,9 @@ dist: trusty
 language: ruby
 rvm:
   - '2.5.3'
-  - '2.4.1'
-  - '2.3.4'
-  - '2.2.7'
+  - '2.4.5'
+  - '2.3.8'
+  - '2.2.10'
   - '2.1.10'
 env:
   - GEM=will_paginate
@@ -16,7 +16,7 @@ gemfile:
   - gemfiles/rails_5_1.gemfile
   - gemfiles/rails_5_2.gemfile
   - gemfiles/rails_head.gemfile
-matrix:
+jobs:
   exclude:
     - rvm: '2.1.10'
       gemfile: gemfiles/rails_5_0.gemfile
@@ -27,4 +27,18 @@ matrix:
     - rvm: '2.1.10'
       gemfile: gemfiles/rails_head.gemfile
   allow_failures:
-  - gemfile: gemfiles/rails_head.gemfile
+    - gemfile: gemfiles/rails_head.gemfile
+  include:
+    - stage: Release
+      rvm: 2.5.3
+      env: []
+      script: skip
+      install: skip
+      deploy:
+        provider: rubygems
+        api_key:
+          secure: MgeXelR7uhiEvC7dqRzV7e6SbWAMG7TvEquFvqIEh0osAbjdV2UKLPGoFHhoP3WTrcPqxUw9HYr0uBsxm5Oj+wsdIT1VSCojVw0BwTIE+rpFFE5JdZdQr5217vAFJn4H8ddareh5E2dyFUXWzlH2w0+75DZd33NAO5LfN2GXsAc=
+        gem: paginate-responder
+        on:
+          tags: true
+          repo: jgraichen/paginate-responder
