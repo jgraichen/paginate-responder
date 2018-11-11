@@ -2,7 +2,8 @@ require 'spec_helper'
 
 RSpec.describe Responders::PaginateResponder, type: :controller do
   case $gem
-    when 'will_paginate'
+    when 'will_paginate',
+         'pagy'
       let(:array_resource) do
         ('AA'..'zz').to_a
       end

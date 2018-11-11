@@ -10,6 +10,7 @@ rvm:
 env:
   - GEM=will_paginate
   - GEM=kaminari
+  - GEM=pagy
 gemfile:
   - gemfiles/rails_4_2.gemfile
   - gemfiles/rails_5_0.gemfile
@@ -26,6 +27,10 @@ jobs:
       gemfile: gemfiles/rails_5_2.gemfile
     - rvm: '2.1.10'
       gemfile: gemfiles/rails_head.gemfile
+    - rvm: '2.2.10'
+      env: GEM=pagy
+    - rvm: '2.1.10'
+      env: GEM=pagy
   allow_failures:
     - gemfile: gemfiles/rails_head.gemfile
   include:
