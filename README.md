@@ -1,8 +1,9 @@
 # Paginate::Responder 
 
-[![Gem Version](https://badge.fury.io/rb/paginate-responder.png)](http://badge.fury.io/rb/paginate-responder)
-[![Build Status](https://travis-ci.org/jgraichen/paginate-responder.png?branch=master)](https://travis-ci.org/jgraichen/paginate-responder)
-[![Code Climate](https://codeclimate.com/github/jgraichen/paginate-responder.png)](https://codeclimate.com/github/jgraichen/paginate-responder)
+[![Gem](https://img.shields.io/gem/v/paginate-responder.svg)](https://rubygems.org/gems/paginate-responder)
+[![Build Status](https://travis-ci.org/jgraichen/paginate-responder.svg?branch=master)](https://travis-ci.org/jgraichen/paginate-responder)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/jgraichen/paginate-responder.svg)](https://codeclimate.com/github/jgraichen/paginate-responder)
+
 
 A Rails pagination responder with link header support.
 
