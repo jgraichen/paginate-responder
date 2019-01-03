@@ -21,6 +21,8 @@ gemfile:
 - gemfiles/rails_head.gemfile
 jobs:
   exclude:
+  - rvm: 2.6.0
+    gemfile: gemfiles/Gemfile.rails-4-2
   - rvm: 2.1.10
     gemfile: gemfiles/rails_5_0.gemfile
   - rvm: 2.1.10
