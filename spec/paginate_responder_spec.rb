@@ -40,6 +40,22 @@ RSpec.describe Responders::PaginateResponder, type: :controller do
       it { expect(json).to eq (51..100).to_a }
     end
 
+    describe '?page empty' do
+      let(:params) { super().merge page: '' }
+
+      it 'responds with first page' do
+        expect(json).to eq (1..50).to_a
+      end
+    end
+
+    describe '?page invalid' do
+      let(:params) { super().merge page: 'foobar' }
+
+      it 'responds with first page' do
+        expect(json).to eq (1..50).to_a
+      end
+    end
+
     describe '?per_page' do
       let(:params) { super().merge per_page: 10 }
 

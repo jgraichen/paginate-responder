@@ -56,6 +56,8 @@ module PaginateResponder
 
     def cast_page(page)
       Integer(page)
+    rescue ArgumentError
+      1
     end
 
     def per_page
