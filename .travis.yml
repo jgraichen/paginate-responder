@@ -1,13 +1,14 @@
 dist: xenial
 language: ruby
 rvm:
-- 2.6.0
+- 2.6.1
 - 2.5.3
 - 2.4.5
 - 2.3.8
 - 2.2.10
 - 2.1.10
 before_install:
+- rvm --force gemset delete global
 - gem install bundler -v '~> 1.17'
 env:
 - GEM=will_paginate
@@ -21,7 +22,7 @@ gemfile:
 - gemfiles/rails_head.gemfile
 jobs:
   exclude:
-  - rvm: 2.6.0
+  - rvm: 2.6.1
     gemfile: gemfiles/rails_4_2.gemfile
   - rvm: 2.1.10
     gemfile: gemfiles/rails_5_0.gemfile
@@ -45,7 +46,7 @@ jobs:
   - gemfile: gemfiles/rails_head.gemfile
   include:
   - stage: Release
-    rvm: 2.6.0
+    rvm: 2.6.1
     env: []
     script: skip
     install: skip
