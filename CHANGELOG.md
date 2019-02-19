@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## 2.0.0 - 2019-02-19
+### Changed
+* Override respond, not to_format for compatibility with decorate-responder 2.0 (#17)
+
 ## 1.8.0 - 2019-02-19
 ### Added
 * Support for pagination using `pagy` gem (#14)
