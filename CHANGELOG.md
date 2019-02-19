@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## 1.8.0 - 2019-02-19
+### Added
+* Support for pagination using `pagy` gem (#14)
+
+### Fixed
+* sqlite3 version conflict in active_record (#15)
+* Invalid ?page parameter could cause exceptions (#16)
+
 ## 1.7.0
 
 * Add `X-Current-Page` header (#10)
