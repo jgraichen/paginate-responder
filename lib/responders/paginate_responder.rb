@@ -1,6 +1,6 @@
 module Responders
   module PaginateResponder
-    def to_format
+    def respond
       paginate! if get?
 
       super
