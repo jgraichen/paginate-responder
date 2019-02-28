@@ -1,7 +1,7 @@
 module Responders
   module PaginateResponder
     def respond
-      paginate! if get?
+      paginate! if get? || request.head?
 
       super
     end

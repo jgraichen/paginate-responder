@@ -21,14 +21,15 @@ RSpec.describe Responders::PaginateResponder, type: :controller do
     end
   end
 
+  let(:method)   { :get }
   let(:response) { action.call; @response }
   let(:json)     { JSON.parse response.body }
   let(:params)   { {format: :json} }
 
   if ActionPack::VERSION::MAJOR >= 5
-    let(:action)   { -> { get :index, params: params } }
+    let(:action)   { -> { send(method, :index, params: params) } }
   else
-    let(:action)   { -> { get :index, params } }
+    let(:action)   { -> { send(method, :index, params) } }
   end
 
   context 'with AR resource' do
@@ -163,6 +164,15 @@ RSpec.describe Responders::PaginateResponder, type: :controller do
       it { is_expected.to include 'next'  => 'http://test.host/index.json?page=2&per_page=50'  }
       it { is_expected.to include 'last'  => 'http://test.host/index.json?page=14&per_page=50' }
     end
+
+    context 'when method is HEAD' do
+      let(:method) { :head }
+
+      it { expect(subject.size).to eq 3 }
+      it { is_expected.to include 'first' => 'http://test.host/index.json?page=1'  }
+      it { is_expected.to include 'next'  => 'http://test.host/index.json?page=2'  }
+      it { is_expected.to include 'last'  => 'http://test.host/index.json?page=14' }
+    end
   end
 
   describe 'headers' do
@@ -172,5 +182,14 @@ RSpec.describe Responders::PaginateResponder, type: :controller do
     it { is_expected.to include 'X-Total-Count' => '676' }
     it { is_expected.to include 'X-Per-Page' => '50' }
     it { is_expected.to include 'X-Current-Page' => '1' }
+
+    context 'when method is HEAD' do
+      let(:method) { :head }
+
+      it { is_expected.to include 'X-Total-Pages' => '14' }
+      it { is_expected.to include 'X-Total-Count' => '676' }
+      it { is_expected.to include 'X-Per-Page' => '50' }
+      it { is_expected.to include 'X-Current-Page' => '1' }
+    end
   end
 end
