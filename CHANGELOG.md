@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## 2.1.0 - 2019-02-28
+### Added
+* Respond with pagination link headers to HEAD requests (#12)
+
 ## 2.0.0 - 2019-02-19
 ### Changed
 * Override respond, not to_format for compatibility with decorate-responder 2.0 (#17)
