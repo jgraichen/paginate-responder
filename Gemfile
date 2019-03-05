@@ -4,4 +4,4 @@ source 'https://rubygems.org'
 gemspec
 
 # Fix version conflict in active_record
-gem 'sqlite3', '~> 1.3.6'
+gem 'sqlite3', '~> 1.4.0'
