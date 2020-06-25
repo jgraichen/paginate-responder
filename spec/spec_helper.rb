@@ -15,9 +15,6 @@ require 'responders'
 
 require 'paginate-responder'
 
-require 'pry'
-require 'pry-byebug'
-
 Dir[File.expand_path('spec/support/**/*.rb')].each {|f| require f }
 
 $gem = ENV['GEM'].to_s
