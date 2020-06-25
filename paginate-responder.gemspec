@@ -19,4 +19,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.add_dependency 'rack-link_headers', '>= 2.2'
+  gem.add_dependency 'responders'
 end
