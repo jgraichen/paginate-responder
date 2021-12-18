@@ -1,9 +1,8 @@
-# Paginate::Responder 
+# Paginate::Responder
 
 [![Gem](https://img.shields.io/gem/v/paginate-responder.svg)](https://rubygems.org/gems/paginate-responder)
 [![Build Status](https://travis-ci.org/jgraichen/paginate-responder.svg?branch=master)](https://travis-ci.org/jgraichen/paginate-responder)
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/jgraichen/paginate-responder.svg)](https://codeclimate.com/github/jgraichen/paginate-responder)
-
 
 A Rails pagination responder with link header support.
 
@@ -22,9 +21,10 @@ Or install it yourself as:
     $ gem install paginate-responder
 
 You will also need a pagination gem. `PaginateResponder` comes with adapters for
-* [will_paginate](https://github.com/mislav/will_paginate),
-* [kaminari](https://github.com/amatsuda/kaminari), and
-* [pagy](https://github.com/ddnexus/pagy).
+
+- [will_paginate](https://github.com/mislav/will_paginate),
+- [kaminari](https://github.com/amatsuda/kaminari), and
+- [pagy](https://github.com/ddnexus/pagy).
 
 It is recommended to use only one pagination gem at once.
 
@@ -53,16 +53,16 @@ end
 `PaginateResponder` will add the following link headers to
 non HTML responses:
 
-* `first` First page's URL.
-* `last` Last page's URL.
-* `next` Next page's URL.
-* `prev` Previous page's URL.
+- `first` First page's URL.
+- `last` Last page's URL.
+- `next` Next page's URL.
+- `prev` Previous page's URL.
 
 `next` and `prev` page links will not be added if current
 page is `first` or `last` page.
 
 Also a `X-Total-Pages` header will be added with the total
-number of pages if available and a `X-Total-Count` header 
+number of pages if available and a `X-Total-Count` header
 with the total number of items. This allows applications
 to display a progress bar or similar while fetching pages.
 
@@ -93,11 +93,6 @@ class ApplicationController
   end
 end
 ```
-
-## TODOs
-
-* Documentation
-** Controller methods
 
 ## Contributing
 
