@@ -1,8 +1,8 @@
 # Paginate::Responder
 
-[![Gem](https://img.shields.io/gem/v/paginate-responder.svg)](https://rubygems.org/gems/paginate-responder)
-[![Build Status](https://travis-ci.org/jgraichen/paginate-responder.svg?branch=master)](https://travis-ci.org/jgraichen/paginate-responder)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/jgraichen/paginate-responder.svg)](https://codeclimate.com/github/jgraichen/paginate-responder)
+[![Gem](https://img.shields.io/gem/v/paginate-responder?logo=rubygems)](https://rubygems.org/gems/paginate-responder)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jgraichen/paginate-responder/test?logo=github)](https://github.com/jgraichen/paginate-responder/actions/workflows/test.yml)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/jgraichen/paginate-responder?logo=codeclimate)](https://codeclimate.com/github/jgraichen/paginate-responder)
 
 A Rails pagination responder with link header support.
 
@@ -108,4 +108,4 @@ end
 
 [MIT License](http://www.opensource.org/licenses/mit-license.php)
 
-Copyright (c) 2013, Jan Graichen
+Copyright © 2013-2021, Jan Graichen
