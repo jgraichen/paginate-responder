@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PaginateResponder
   class Base
     attr_reader :responder, :resource
@@ -39,10 +41,10 @@ module PaginateResponder
       link! 'next',  page: next_page  if next_page
       link! 'last',  page: last_page  if last_page
 
-      response.headers["X-Total-Pages"]  = total_pages.to_s if total_pages
-      response.headers["X-Total-Count"]  = total_count.to_s if total_count
-      response.headers["X-Per-Page"]     = per_page.to_s    if per_page
-      response.headers["X-Current-Page"] = page.to_s        if page
+      response.headers['X-Total-Pages']  = total_pages.to_s if total_pages
+      response.headers['X-Total-Count']  = total_count.to_s if total_count
+      response.headers['X-Per-Page']     = per_page.to_s    if per_page
+      response.headers['X-Current-Page'] = page.to_s        if page
     end
 
     def page
@@ -65,7 +67,11 @@ module PaginateResponder
         val ||= controller.per_page if controller.respond_to? :per_page
         val ||= controller.params[:per_page].try(:to_i)
         val ||= default_per_page
-        val < 1 ? 1 : (val > max_per_page) ? max_per_page : val
+        if val < 1
+          1
+        else
+          val > max_per_page ? max_per_page : val
+        end
       end
     end
 
@@ -124,7 +130,7 @@ module PaginateResponder
     end
 
     class << self
-      def suitable?(resource)
+      def suitable?(_resource)
         false
       end
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Responders
   module PaginateResponder
     def respond
@@ -19,7 +21,7 @@ module Responders
       end
 
       def adapters
-        @adpaters ||= ::Set.new
+        @adapters ||= ::Set.new
       end
 
       def init(responder)
@@ -28,7 +30,7 @@ module Responders
         end
 
         adapter = find(responder)
-        adapter.new(responder) if adapter
+        adapter&.new(responder)
       end
 
       def find(responder)

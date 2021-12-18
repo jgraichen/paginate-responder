@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PaginateResponder
   #
   # Pagination adapter for kaminari.
@@ -25,8 +27,8 @@ module PaginateResponder
     end
 
     class << self
-      def suitable?(resource, responder)
-        resource.respond_to?(:page) and not resource.respond_to?(:paginate)
+      def suitable?(resource, _responder)
+        resource.respond_to?(:page) and !resource.respond_to?(:paginate)
       end
     end
   end

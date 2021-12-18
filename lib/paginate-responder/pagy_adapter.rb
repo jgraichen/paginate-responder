@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 module PaginateResponder
   #
   # Pagination adapter for pagy.
   #
   class PagyAdapter < Base
     def paginate
-      self.pagy, self.pagy_resource = controller.send(self.class.pagy_method(resource), resource, page: page, items: per_page)
+      self.pagy, self.pagy_resource = controller.send(self.class.pagy_method(resource), resource, page: page,
+items: per_page,)
       pagy_resource
     end
 
@@ -36,7 +39,7 @@ module PaginateResponder
       end
 
       def pagy_method(resource)
-        %i[limit offset].all? { |model_method| resource.respond_to?(model_method) } ? :pagy : :pagy_array
+        %i[limit offset].all? {|model_method| resource.respond_to?(model_method) } ? :pagy : :pagy_array
       end
     end
 

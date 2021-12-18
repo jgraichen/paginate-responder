@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rubygems'
 require 'bundler/setup'
 
@@ -12,15 +14,13 @@ require 'active_record'
 require 'rspec'
 
 require 'responders'
-
 require 'paginate-responder'
 
-Dir[File.expand_path('spec/support/**/*.rb')].each {|f| require f }
+Dir[File.expand_path('spec/support/**/*.rb')].sort.each {|f| require f }
 
-$gem = ENV['GEM'].to_s
-$gem = 'will_paginate' if $gem.empty?
+GEM = ENV.fetch('GEM', 'will_paginate')
 
-case $gem
+case GEM
   when 'will_paginate'
     require 'will_paginate/array'
     require 'will_paginate/active_record'

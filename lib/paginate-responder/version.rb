@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PaginateResponder
   module VERSION
     MAJOR = 2

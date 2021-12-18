@@ -1,36 +1,18 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-RSpec.describe Responders::PaginateResponder, type: :controller do
-  case $gem
-    when 'will_paginate',
-         'pagy'
-      let(:array_resource) do
-        ('AA'..'zz').to_a
-      end
-    when 'kaminari'
-      let(:array_resource) do
-        Kaminari.paginate_array ('AA'..'zz').to_a
-      end
+RSpec.describe Responders::PaginateResponder do
+  subject(:json) do
+    action.call
+    JSON.parse(response.body)
   end
 
-  before do
-    if ActiveRecord::VERSION::MAJOR >= 4
-      self.resource = ArModel.all
-    else
-      self.resource = ArModel.scoped
-    end
-  end
+  let(:resource) { ArModel.all }
 
   let(:method)   { :get }
-  let(:response) { action.call; @response }
-  let(:json)     { JSON.parse response.body }
   let(:params)   { {format: :json} }
-
-  if ActionPack::VERSION::MAJOR >= 5
-    let(:action)   { -> { send(method, :index, params: params) } }
-  else
-    let(:action)   { -> { send(method, :index, params) } }
-  end
+  let(:action)   { -> { send(method, :index, params: params) } }
 
   context 'with AR resource' do
     it { expect(json).to eq (1..50).to_a }
@@ -71,7 +53,14 @@ RSpec.describe Responders::PaginateResponder, type: :controller do
   end
 
   context 'with array resource' do
-    before { @controller.resource = array_resource }
+    let(:resource) do
+      case GEM
+        when 'will_paginate', 'pagy'
+          ('AA'..'zz').to_a
+        when 'kaminari'
+          Kaminari.paginate_array ('AA'..'zz').to_a
+      end
+    end
 
     it { expect(json).to eq ('AA'..'zz').to_a[0..49] }
 
@@ -95,15 +84,18 @@ RSpec.describe Responders::PaginateResponder, type: :controller do
   end
 
   context 'with AR association' do
-    before { @controller.resource = ArModel.find(1).ar_assoc_models }
+    let(:resource) { ArModel.find(1).ar_assoc_models }
 
     it { expect(json).to eq (1..5).to_a }
   end
 
   describe 'links' do
-    subject { response.links.map{|l| [l[:params][:rel], l[:url]]}.to_h }
+    subject(:links) do
+      action.call
+      response.links.map {|l| [l[:params][:rel], l[:url]] }.to_h
+    end
 
-    it { expect(subject.size).to eq 3 }
+    it { expect(links.size).to eq 3 }
     it { is_expected.to include 'first' => 'http://test.host/index.json?page=1'  }
     it { is_expected.to include 'next'  => 'http://test.host/index.json?page=2'  }
     it { is_expected.to include 'last'  => 'http://test.host/index.json?page=14' }
@@ -111,7 +103,7 @@ RSpec.describe Responders::PaginateResponder, type: :controller do
     context '?page' do
       let(:params) { super().merge page: 2 }
 
-      it { expect(subject.size).to eq 4 }
+      it { expect(links.size).to eq 4 }
       it { is_expected.to include 'first' => 'http://test.host/index.json?page=1'  }
       it { is_expected.to include 'prev'  => 'http://test.host/index.json?page=1'  }
       it { is_expected.to include 'next'  => 'http://test.host/index.json?page=3'  }
@@ -121,7 +113,7 @@ RSpec.describe Responders::PaginateResponder, type: :controller do
     context '?page=5' do
       let(:params) { super().merge page: 5 }
 
-      it { expect(subject.size).to eq 4 }
+      it { expect(links.size).to eq 4 }
       it { is_expected.to include 'first' => 'http://test.host/index.json?page=1'  }
       it { is_expected.to include 'prev'  => 'http://test.host/index.json?page=4'  }
       it { is_expected.to include 'next'  => 'http://test.host/index.json?page=6'  }
@@ -131,7 +123,7 @@ RSpec.describe Responders::PaginateResponder, type: :controller do
     context '?page last' do
       let(:params) { super().merge page: 14 }
 
-      it { expect(subject.size).to eq 3 }
+      it { expect(links.size).to eq 3 }
       it { is_expected.to include 'first' => 'http://test.host/index.json?page=1'  }
       it { is_expected.to include 'prev'  => 'http://test.host/index.json?page=13' }
       it { is_expected.to include 'last'  => 'http://test.host/index.json?page=14' }
@@ -140,7 +132,7 @@ RSpec.describe Responders::PaginateResponder, type: :controller do
     context '?page before last' do
       let(:params) { super().merge page: 13 }
 
-      it { expect(subject.size).to eq 4 }
+      it { expect(links.size).to eq 4 }
       it { is_expected.to include 'first' => 'http://test.host/index.json?page=1'  }
       it { is_expected.to include 'prev'  => 'http://test.host/index.json?page=12' }
       it { is_expected.to include 'next'  => 'http://test.host/index.json?page=14' }
@@ -150,7 +142,7 @@ RSpec.describe Responders::PaginateResponder, type: :controller do
     context '?per_page' do
       let(:params) { super().merge page: 1, per_page: 10 }
 
-      it { expect(subject.size).to eq 3 }
+      it { expect(links.size).to eq 3 }
       it { is_expected.to include 'first' => 'http://test.host/index.json?page=1&per_page=10'  }
       it { is_expected.to include 'next'  => 'http://test.host/index.json?page=2&per_page=10'  }
       it { is_expected.to include 'last'  => 'http://test.host/index.json?page=68&per_page=10' }
@@ -159,7 +151,7 @@ RSpec.describe Responders::PaginateResponder, type: :controller do
     context '?per_page above max per page limit' do
       let(:params) { super().merge page: 1, per_page: 100 }
 
-      it { expect(subject.size).to eq 3 }
+      it { expect(links.size).to eq 3 }
       it { is_expected.to include 'first' => 'http://test.host/index.json?page=1&per_page=50'  }
       it { is_expected.to include 'next'  => 'http://test.host/index.json?page=2&per_page=50'  }
       it { is_expected.to include 'last'  => 'http://test.host/index.json?page=14&per_page=50' }
@@ -168,7 +160,7 @@ RSpec.describe Responders::PaginateResponder, type: :controller do
     context 'when method is HEAD' do
       let(:method) { :head }
 
-      it { expect(subject.size).to eq 3 }
+      it { expect(links.size).to eq 3 }
       it { is_expected.to include 'first' => 'http://test.host/index.json?page=1'  }
       it { is_expected.to include 'next'  => 'http://test.host/index.json?page=2'  }
       it { is_expected.to include 'last'  => 'http://test.host/index.json?page=14' }
@@ -176,7 +168,10 @@ RSpec.describe Responders::PaginateResponder, type: :controller do
   end
 
   describe 'headers' do
-    subject { response.headers.to_h }
+    subject do
+      action.call
+      response.headers.to_h
+    end
 
     it { is_expected.to include 'X-Total-Pages' => '14' }
     it { is_expected.to include 'X-Total-Count' => '676' }

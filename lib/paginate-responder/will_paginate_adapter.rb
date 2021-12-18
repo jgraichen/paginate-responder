@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PaginateResponder
   #
   # Pagination adapter for will_paginate.
@@ -24,7 +26,7 @@ module PaginateResponder
     end
 
     class << self
-      def suitable?(resource, responder)
+      def suitable?(resource, _responder)
         resource.respond_to? :paginate
       end
     end

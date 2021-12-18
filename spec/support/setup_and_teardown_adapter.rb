@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SetupAndTeardownAdapter
   extend ActiveSupport::Concern
 
@@ -6,7 +8,7 @@ module SetupAndTeardownAdapter
     # hooks.
     def setup(*methods, &block)
       methods.each do |method|
-        if method.to_s =~ /^setup_(with_controller|fixtures|controller_request_and_response)$/
+        if /^setup_(with_controller|fixtures|controller_request_and_response)$/.match?(method.to_s)
           prepend_before { __send__ method }
         else
           before         { __send__ method }
@@ -20,7 +22,7 @@ module SetupAndTeardownAdapter
     # Wraps `teardown` calls from within Rails' testing framework in
     # `after` hooks.
     def teardown(*methods, &block)
-      methods.each { |method| after { __send__ method } }
+      methods.each {|method| after { __send__ method } }
       after(&block) if block
     end
   end
