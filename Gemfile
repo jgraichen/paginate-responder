@@ -14,6 +14,8 @@ gem 'sqlite3', '~> 1.4'
 gem 'rspec'
 gem 'rspec-rails'
 
+gem 'my-rubocop', github: 'jgraichen/my-rubocop', ref: 'v3'
+
 group :development do
   gem 'appraisal'
   gem 'rake'

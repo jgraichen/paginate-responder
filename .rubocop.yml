@@ -1,0 +1,15 @@
+#
+
+inherit_gem:
+  my-rubocop: default.yml
+
+AllCops:
+  TargetRubyVersion: 2.5
+  SuggestExtensions: False
+
+Naming/FileName:
+  Exclude:
+    - lib/paginate-responder.rb
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10 # Defaults to 5 o_O
