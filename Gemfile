@@ -11,7 +11,7 @@ gem 'will_paginate'
 
 gem 'actionpack', '>= 3.2.0'
 gem 'activerecord', '>= 3.2.0'
-gem 'sqlite3', '~> 1.4'
+gem 'sqlite3', '~> 2.0'
 
 gem 'rspec'
 gem 'rspec-rails'
