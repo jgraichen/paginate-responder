@@ -170,21 +170,21 @@ RSpec.describe Responders::PaginateResponder do
   describe 'headers' do
     subject do
       action.call
-      response.headers.to_h
+      response.headers.to_h.transform_keys(&:downcase)
     end
 
-    it { is_expected.to include 'X-Total-Pages' => '14' }
-    it { is_expected.to include 'X-Total-Count' => '676' }
-    it { is_expected.to include 'X-Per-Page' => '50' }
-    it { is_expected.to include 'X-Current-Page' => '1' }
+    it { is_expected.to include 'x-total-pages' => '14' }
+    it { is_expected.to include 'x-total-count' => '676' }
+    it { is_expected.to include 'x-per-page' => '50' }
+    it { is_expected.to include 'x-current-page' => '1' }
 
     context 'when method is HEAD' do
       let(:method) { :head }
 
-      it { is_expected.to include 'X-Total-Pages' => '14' }
-      it { is_expected.to include 'X-Total-Count' => '676' }
-      it { is_expected.to include 'X-Per-Page' => '50' }
-      it { is_expected.to include 'X-Current-Page' => '1' }
+      it { is_expected.to include 'x-total-pages' => '14' }
+      it { is_expected.to include 'x-total-count' => '676' }
+      it { is_expected.to include 'x-per-page' => '50' }
+      it { is_expected.to include 'x-current-page' => '1' }
     end
   end
 end
