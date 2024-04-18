@@ -7,9 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Dropped unsupported Ruby and Rails versions from test matrix
+
 ### Added
 
-- Added Rails 6.1 + 7.0 and Ruby 3.0 to new Github Actions test pipeline
+- Added Rails 6.1 + 7.0 and Ruby 3.0 to new GitHub Actions test pipeline
+- Added Rails 7.1 and Ruby 3.1, 3.2, 3.3 to test matrix
+
+### Fixed
+
+- Fix header case issues in test suite with Rails 7.1
 
 ## 2.1.0 - 2019-02-28
 
