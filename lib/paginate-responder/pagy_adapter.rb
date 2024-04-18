@@ -7,7 +7,7 @@ module PaginateResponder
   class PagyAdapter < Base
     def paginate
       self.pagy, self.pagy_resource = controller.send(self.class.pagy_method(resource), resource, page: page,
-items: per_page,)
+        items: per_page,)
       pagy_resource
     end
 

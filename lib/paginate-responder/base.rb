@@ -70,7 +70,7 @@ module PaginateResponder
         if val < 1
           1
         else
-          val > max_per_page ? max_per_page : val
+          [val, max_per_page].min
         end
       end
     end
