@@ -1,7 +1,7 @@
 # Paginate::Responder
 
 [![Gem](https://img.shields.io/gem/v/paginate-responder?logo=rubygems)](https://rubygems.org/gems/paginate-responder)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jgraichen/paginate-responder/test?logo=github)](https://github.com/jgraichen/paginate-responder/actions/workflows/test.yml)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/jgraichen/paginate-responder/test.yml?logo=github)](https://github.com/jgraichen/paginate-responder/actions/workflows/test.yml)
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/jgraichen/paginate-responder?logo=codeclimate)](https://codeclimate.com/github/jgraichen/paginate-responder)
 
 A Rails pagination responder with link header support.
@@ -10,21 +10,27 @@ A Rails pagination responder with link header support.
 
 Add this line to your application's Gemfile:
 
-    gem 'paginate-responder'
+```ruby
+gem 'paginate-responder'
+```
 
 And then execute:
 
-    $ bundle
+```session
+bundle
+```
 
 Or install it yourself as:
 
-    $ gem install paginate-responder
+```session
+gem install paginate-responder
+```
 
 You will also need a pagination gem. `PaginateResponder` comes with adapters for
 
-- [will_paginate](https://github.com/mislav/will_paginate),
-- [kaminari](https://github.com/amatsuda/kaminari), and
-- [pagy](https://github.com/ddnexus/pagy).
+- [`will_paginate`](https://github.com/mislav/will_paginate),
+- [`kaminari`](https://github.com/amatsuda/kaminari), and
+- [`pagy`](https://github.com/ddnexus/pagy).
 
 It is recommended to use only one pagination gem at once.
 
@@ -42,7 +48,7 @@ class MyController < ApplicationController
 end
 ```
 
-Or use it with [plataformatec/responders](https://github.com/plataformatec/responders):
+Or use it with [`plataformatec/responders`](https://github.com/plataformatec/responders):
 
 ```ruby
 class MyController < ApplicationController
@@ -58,19 +64,13 @@ non HTML responses:
 - `next` Next page's URL.
 - `prev` Previous page's URL.
 
-`next` and `prev` page links will not be added if current
-page is `first` or `last` page.
+`next` and `prev` page links will not be added if current page is `first` or `last` page.
 
-Also a `X-Total-Pages` header will be added with the total
-number of pages if available and a `X-Total-Count` header
-with the total number of items. This allows applications
-to display a progress bar or similar while fetching pages.
+Additionally, a `X-Total-Pages` header will be added with the total number of pages if available and a `X-Total-Count` header with the total number of items. This allows applications to display a progress bar or similar while fetching pages.
 
 ## Override page detections and options
 
-You can override the page detection by creating a method
-`page` in your controller that returns the page index as
-a fixnum:
+You can override the page detection by creating a method `page` in your controller that returns the page index as a numeric:
 
 ```ruby
 class ApplicationController
@@ -80,7 +80,7 @@ class ApplicationController
 end
 ```
 
-Same goes for `per_page` and `max_per_page`:
+The same applies to `per_page` and `max_per_page`:
 
 ```ruby
 class ApplicationController
@@ -108,4 +108,4 @@ end
 
 [MIT License](http://www.opensource.org/licenses/mit-license.php)
 
-Copyright © 2013-2021, Jan Graichen
+Copyright © 2013-2024, Jan Graichen
