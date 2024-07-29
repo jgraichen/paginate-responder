@@ -16,7 +16,7 @@ gem 'sqlite3', '~> 1.4' # Rails does NOT accept 2.0
 gem 'rspec'
 gem 'rspec-rails'
 
-gem 'rubocop-config', github: 'jgraichen/rubocop-config', ref: 'v11'
+gem 'rubocop-config', github: 'jgraichen/rubocop-config', ref: 'v12'
 
 group :development do
   gem 'appraisal'

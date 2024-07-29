@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.name          = 'paginate-responder'
   gem.version       = PaginateResponder::VERSION
   gem.authors       = ['Jan Graichen']
-  gem.email         = ['jg@altimos.de']
+  gem.email         = ['jgraichen@altimos.de']
   gem.description   = 'A Rails pagination responder with link header support.'
   gem.summary       = 'A Rails pagination responder with link header support.'
   gem.homepage      = 'https://github.com/jgraichen/paginate-responder'
@@ -23,7 +23,7 @@ Gem::Specification.new do |gem|
   gem.executables   = gem.files.grep(%r{^bin/}).map {|f| File.basename(f) }
   gem.require_paths = ['lib']
 
-  gem.required_ruby_version = '>= 2.5.0'
+  gem.required_ruby_version = '>= 2.7.0'
 
   gem.add_dependency 'rack-link_headers', '>= 2.2'
   gem.add_dependency 'responders'

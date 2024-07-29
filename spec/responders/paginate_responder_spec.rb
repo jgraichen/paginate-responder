@@ -92,7 +92,7 @@ RSpec.describe Responders::PaginateResponder do
   describe 'links' do
     subject(:links) do
       action.call
-      response.links.map {|l| [l[:params][:rel], l[:url]] }.to_h
+      response.links.to_h {|l| [l[:params][:rel], l[:url]] }
     end
 
     it { expect(links.size).to eq 3 }
