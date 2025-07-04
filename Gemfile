@@ -9,9 +9,9 @@ gem 'kaminari'
 gem 'pagy'
 gem 'will_paginate'
 
-gem 'actionpack', '>= 3.2.0'
-gem 'activerecord', '>= 3.2.0'
-gem 'sqlite3', '~> 1.4' # Rails does NOT accept 2.0
+gem 'actionpack', '>= 6.1.0'
+gem 'activerecord', '>= 6.1.0'
+gem 'sqlite3'
 
 gem 'rspec'
 gem 'rspec-rails'

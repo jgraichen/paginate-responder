@@ -3,6 +3,9 @@
 require 'rubygems'
 require 'bundler/setup'
 
+# Workaround for older Rails versions not explicitly requiring logger
+require 'logger'
+
 # Configure Rails
 ENV['RAILS_ENV'] = 'test'
 
