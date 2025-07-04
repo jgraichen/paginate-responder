@@ -2,7 +2,6 @@
 
 [![Gem](https://img.shields.io/gem/v/paginate-responder?logo=rubygems)](https://rubygems.org/gems/paginate-responder)
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/jgraichen/paginate-responder/test.yml?logo=github)](https://github.com/jgraichen/paginate-responder/actions/workflows/test.yml)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/jgraichen/paginate-responder?logo=codeclimate)](https://codeclimate.com/github/jgraichen/paginate-responder)
 
 A Rails pagination responder with link header support.
 
@@ -12,18 +11,6 @@ Add this line to your application's Gemfile:
 
 ```ruby
 gem 'paginate-responder'
-```
-
-And then execute:
-
-```session
-bundle
-```
-
-Or install it yourself as:
-
-```session
-gem install paginate-responder
 ```
 
 You will also need a pagination gem. `PaginateResponder` comes with adapters for
@@ -108,4 +95,4 @@ end
 
 [MIT License](http://www.opensource.org/licenses/mit-license.php)
 
-Copyright © 2013-2024, Jan Graichen
+Copyright © 2013-2025, Jan Graichen
