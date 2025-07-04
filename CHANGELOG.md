@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Added Rails 6.1 + 7.0 and Ruby 3.0 to new GitHub Actions test pipeline
 - Added Rails 7.1 and Ruby 3.1, 3.2, 3.3 to test matrix
+- Added Ruby 3.4 and Rails 7.2+ to test matrix
 
 ### Fixed
 
