@@ -27,12 +27,12 @@ module PaginateResponder
 
     class << self
       def suitable?(resource, _responder)
-        resource.respond_to? :paginate
+        resource.respond_to?(:paginate)
       end
     end
   end
 
-  if defined?(:WillPaginate)
-    ::Responders::PaginateResponder.register WillPaginateAdapter
+  if defined?(WillPaginate)
+    ::Responders::PaginateResponder.register(WillPaginateAdapter)
   end
 end

@@ -29,12 +29,12 @@ module PaginateResponder
 
     class << self
       def suitable?(resource, _responder)
-        resource.respond_to?(:page) and !resource.respond_to?(:paginate)
+        resource.respond_to?(:page) && !resource.respond_to?(:paginate)
       end
     end
   end
 
-  if defined?(:Kaminari)
-    ::Responders::PaginateResponder.register KaminariAdapter
+  if defined?(Kaminari)
+    ::Responders::PaginateResponder.register(KaminariAdapter)
   end
 end

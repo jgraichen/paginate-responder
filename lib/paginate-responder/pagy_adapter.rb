@@ -48,7 +48,7 @@ module PaginateResponder
     attr_accessor :pagy, :pagy_resource
   end
 
-  if defined?(:Pagy)
-    ::Responders::PaginateResponder.register PagyAdapter
+  if defined?(Pagy)
+    ::Responders::PaginateResponder.register(PagyAdapter)
   end
 end
