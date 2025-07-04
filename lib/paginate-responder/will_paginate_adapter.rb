@@ -32,7 +32,5 @@ module PaginateResponder
     end
   end
 
-  if defined?(WillPaginate)
-    ::Responders::PaginateResponder.register(WillPaginateAdapter)
-  end
+  ::Responders::PaginateResponder.register(WillPaginateAdapter)
 end

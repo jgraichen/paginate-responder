@@ -34,7 +34,5 @@ module PaginateResponder
     end
   end
 
-  if defined?(Kaminari)
-    ::Responders::PaginateResponder.register(KaminariAdapter)
-  end
+  ::Responders::PaginateResponder.register(KaminariAdapter)
 end

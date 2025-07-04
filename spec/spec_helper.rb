@@ -17,6 +17,9 @@ require 'active_record'
 require 'rspec'
 
 require 'responders'
+require 'paginate-responder'
+
+Dir[File.expand_path('spec/support/**/*.rb')].sort.each {|f| require f }
 
 GEM = ENV.fetch('GEM', 'will_paginate')
 
@@ -44,10 +47,6 @@ case GEM
     Pagy::VARS[:items] = 50
     Pagy::VARS[:max_items] = 50
 end
-
-require 'paginate-responder'
-
-Dir[File.expand_path('spec/support/**/*.rb')].sort.each {|f| require f }
 
 RSpec.configure do |config|
   config.order = 'random'
