@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.2.0] - 2025-07-04
+
 ### Changed
 
 - Dropped unsupported Ruby and Rails versions from test matrix
@@ -103,3 +105,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Generate Link header using `rack-link_headers`
+
+[Unreleased]: https://github.com/jgraichen/paginate-responder/compare/v2.2.0...HEAD
+[2.2.0]: https://github.com/jgraichen/paginate-responder/compare/v2.1.0...v2.2.0
