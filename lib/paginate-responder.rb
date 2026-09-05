@@ -6,7 +6,7 @@ module Responders
   require 'responders/paginate_responder'
 end
 
-module PaginateResponder
+module PaginateResponder # rubocop:disable Style/OneClassPerFile
   require 'paginate-responder/version'
   require 'paginate-responder/base'
   require 'paginate-responder/will_paginate_adapter'
