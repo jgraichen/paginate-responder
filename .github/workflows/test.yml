@@ -20,6 +20,7 @@ jobs:
     strategy:
       matrix:
         ruby:
+          - "4.0"
           - "3.4"
           - "3.3"
           - "3.2"
@@ -31,6 +32,10 @@ jobs:
           - rails_7.0
           - rails_6.1
         exclude:
+          - ruby: "4.0"
+            gemfile: rails_7.0
+          - ruby: "4.0"
+            gemfile: rails_6.1
           - ruby: "3.4"
             gemfile: rails_7.0
           - ruby: "3.4"
@@ -43,16 +48,16 @@ jobs:
       BUNDLE_GEMFILE: gemfiles/${{ matrix.gemfile }}.gemfile
 
     steps:
-      - uses: actions/checkout@61b9e3751b92087fd0b06925ba6dd6314e06f089 # master
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Install dependencies
         run: |
           sudo apt-get install --quiet --yes libsqlite3-dev
 
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: True
+          bundler-cache: true
 
       - run: bundle exec rspec --color --format documentation
 
@@ -61,10 +66,10 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - uses: actions/checkout@61b9e3751b92087fd0b06925ba6dd6314e06f089 # master
-      - uses: ruby/setup-ruby@v1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1
         with:
           ruby-version: "4.0.6"
-          bundler-cache: True
+          bundler-cache: true
 
       - run: bundle exec rubocop --parallel --color
