@@ -11,7 +11,7 @@ module SetupAndTeardownAdapter
         if /^setup_(with_controller|fixtures|controller_request_and_response)$/.match?(method.to_s)
           prepend_before { __send__ method }
         else
-          before         { __send__ method }
+          before { __send__ method }
         end
       end
       before(&block) if block
