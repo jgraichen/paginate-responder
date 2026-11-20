@@ -16,7 +16,7 @@ gem 'sqlite3'
 gem 'rspec'
 gem 'rspec-rails'
 
-gem 'rubocop-config', github: 'jgraichen/rubocop-config', tag: 'v15'
+gem 'rubocop-config', github: 'jgraichen/rubocop-config', tag: 'v16'
 
 group :development do
   gem 'appraisal'
