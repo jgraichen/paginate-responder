@@ -20,7 +20,7 @@ module PaginateResponder
     def total_pages
       return resource.total_pages if resource.respond_to? :total_pages
 
-      resource.num_pages   if resource.respond_to? :num_pages
+      resource.num_pages if resource.respond_to? :num_pages
     end
 
     def total_count
